@@ -1,6 +1,6 @@
 ﻿namespace Mshroo3i.Domain
 {
-    public class Store
+    public class Store: Entity
     {
         public string Name { get; set; }
         public string Shortcode { get; set; }
