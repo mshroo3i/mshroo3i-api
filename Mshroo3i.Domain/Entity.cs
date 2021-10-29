@@ -8,6 +8,13 @@ namespace Mshroo3i.Domain
 {
     public abstract class Entity
     {
-        public int id { get; set; }
+        public int Id { get; set; }
+        public DateTime Created { get; private set; }
+        public DateTime LastModified {  set; get; }
+
+        public Entity(DateTime created)
+        {
+            Created = created;
+        }
     }
 }

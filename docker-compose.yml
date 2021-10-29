@@ -1,0 +1,32 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  db:
+    container_name: mshroo3i_pg_db
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    environment:
+      - POSTGRES_PASSWORD=docker
+    volumes:
+      - mshroo3i_db:/var/lib/postgresql/data
+    networks:
+      - backend
+  # mshroo3iwebapi:
+  #   image: mshroo3iwebapi
+  #   build:
+  #     context: .
+  #     dockerfile: mshroo3i-api/Dockerfile
+  #   ports:
+  #     - 5000:5000
+
+volumes:
+  mshroo3i_db: {}
+
+networks:
+  backend:

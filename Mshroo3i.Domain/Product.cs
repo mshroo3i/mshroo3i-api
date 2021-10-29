@@ -2,10 +2,14 @@
 {
     public class Product: Entity
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Image { get; set; }
-        public double Price { get; set; }
-        public IList<ProductOption> ProductOptions { get; set; }
+        public Product(DateTime created) : base(created)
+        {
+        }
+
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public string Image { get; set; } = string.Empty;
+        public double Price { get; set; } = 0;
+        public IList<ProductOption> ProductOptions { get; set; } = new List<ProductOption>();
     }
 }
