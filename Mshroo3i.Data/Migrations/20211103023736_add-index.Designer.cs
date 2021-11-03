@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mshroo3i.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -9,9 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Mshroo3i.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20211103023736_add-index")]
+    partial class addindex
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,10 +36,8 @@ namespace Mshroo3i.Data.Migrations
                         .HasDefaultValueSql("NOW()");
 
                     b.Property<DateTime>("LastModified")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasColumnName("last_modified")
-                        .HasDefaultValueSql("NOW()");
+                        .HasColumnName("last_modified");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -86,10 +86,8 @@ namespace Mshroo3i.Data.Migrations
                         .HasColumnName("image");
 
                     b.Property<DateTime>("LastModified")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasColumnName("last_modified")
-                        .HasDefaultValueSql("NOW()");
+                        .HasColumnName("last_modified");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -128,10 +126,8 @@ namespace Mshroo3i.Data.Migrations
                         .HasDefaultValueSql("NOW()");
 
                     b.Property<DateTime>("LastModified")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasColumnName("last_modified")
-                        .HasDefaultValueSql("NOW()");
+                        .HasColumnName("last_modified");
 
                     b.Property<string>("OptionName")
                         .IsRequired()
@@ -191,10 +187,8 @@ namespace Mshroo3i.Data.Migrations
                         .HasColumnName("instagram_handle");
 
                     b.Property<DateTime>("LastModified")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
-                        .HasColumnName("last_modified")
-                        .HasDefaultValueSql("NOW()");
+                        .HasColumnName("last_modified");
 
                     b.Property<string>("LogoImg")
                         .IsRequired()

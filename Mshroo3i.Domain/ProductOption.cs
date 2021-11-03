@@ -2,6 +2,10 @@
 {
     public class ProductOption : Entity
     {
+        public ProductOption()
+        {
+        }
+
         public ProductOption(DateTime created) : base(created)
         {
         }

@@ -2,6 +2,10 @@
 {
     public class Option : Entity
     {
+        public Option()
+        {
+        }
+
         public Option(DateTime created) : base(created)
         {
         }

@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Mshroo3i.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20211029034206_initial")]
-    partial class initial
+    [Migration("20211103022234_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,31 +26,39 @@ namespace Mshroo3i.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
+                        .HasColumnName("created")
                         .HasDefaultValueSql("NOW()");
 
                     b.Property<DateTime>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("last_modified");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("name");
 
                     b.Property<double>("PriceIncrement")
-                        .HasColumnType("double precision");
+                        .HasColumnType("double precision")
+                        .HasColumnName("price_increment");
 
                     b.Property<int?>("ProductOptionId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("product_option_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_options");
 
-                    b.HasIndex("ProductOptionId");
+                    b.HasIndex("ProductOptionId")
+                        .HasDatabaseName("ix_options_product_option_id");
 
-                    b.ToTable("Options");
+                    b.ToTable("options");
                 });
 
             modelBuilder.Entity("Mshroo3i.Domain.Product", b =>
@@ -58,39 +66,49 @@ namespace Mshroo3i.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
+                        .HasColumnName("created")
                         .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("description");
 
                     b.Property<string>("Image")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("image");
 
                     b.Property<DateTime>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("last_modified");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("name");
 
                     b.Property<double>("Price")
-                        .HasColumnType("double precision");
+                        .HasColumnType("double precision")
+                        .HasColumnName("price");
 
                     b.Property<int?>("StoreId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("store_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_products");
 
-                    b.HasIndex("StoreId");
+                    b.HasIndex("StoreId")
+                        .HasDatabaseName("ix_products_store_id");
 
-                    b.ToTable("Products");
+                    b.ToTable("products");
                 });
 
             modelBuilder.Entity("Mshroo3i.Domain.ProductOption", b =>
@@ -98,32 +116,40 @@ namespace Mshroo3i.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
+                        .HasColumnName("created")
                         .HasDefaultValueSql("NOW()");
 
                     b.Property<DateTime>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("last_modified");
 
                     b.Property<string>("OptionName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("option_name");
 
                     b.Property<string>("OptionType")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("option_type");
 
                     b.Property<int?>("ProductId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("product_id");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_product_options");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProductId")
+                        .HasDatabaseName("ix_product_options_product_id");
 
-                    b.ToTable("ProductOptions");
+                    b.ToTable("product_options");
                 });
 
             modelBuilder.Entity("Mshroo3i.Domain.Store", b =>
@@ -131,50 +157,62 @@ namespace Mshroo3i.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
+                        .HasColumnName("id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp without time zone")
+                        .HasColumnName("created")
                         .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Currency")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("currency");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("description");
 
                     b.Property<string>("HeroImg")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("hero_img");
 
                     b.Property<string>("InstagramHandle")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("instagram_handle");
 
                     b.Property<DateTime>("LastModified")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("last_modified");
 
                     b.Property<string>("LogoImg")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("logo_img");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("name");
 
                     b.Property<int>("Owner")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("owner");
 
                     b.Property<string>("Shortcode")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("shortcode");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_stores");
 
-                    b.ToTable("Stores");
+                    b.ToTable("stores");
                 });
 
             modelBuilder.Entity("Mshroo3i.Domain.Option", b =>
@@ -182,6 +220,7 @@ namespace Mshroo3i.Data.Migrations
                     b.HasOne("Mshroo3i.Domain.ProductOption", null)
                         .WithMany("Options")
                         .HasForeignKey("ProductOptionId")
+                        .HasConstraintName("fk_options_product_options_product_option_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -190,6 +229,7 @@ namespace Mshroo3i.Data.Migrations
                     b.HasOne("Mshroo3i.Domain.Store", null)
                         .WithMany("Products")
                         .HasForeignKey("StoreId")
+                        .HasConstraintName("fk_products_stores_store_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -198,6 +238,7 @@ namespace Mshroo3i.Data.Migrations
                     b.HasOne("Mshroo3i.Domain.Product", null)
                         .WithMany("ProductOptions")
                         .HasForeignKey("ProductId")
+                        .HasConstraintName("fk_product_options_products_product_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

@@ -13,4 +13,7 @@
 dotnet-ef dbcontext script
 
 dotnet-ef migrations add <NAME>
+
+dotnet-ef database update
+dotnet-ef database drop
 ```

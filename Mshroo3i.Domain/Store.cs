@@ -2,6 +2,10 @@
 {
     public class Store: Entity
     {
+        public Store()
+        {
+        }
+
         public Store(DateTime created, int owner) : base(created)
         {
             Owner = owner;

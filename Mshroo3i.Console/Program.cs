@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Microsoft.EntityFrameworkCore;
+using Mshroo3i.Data;
 using Mshroo3i.Domain;
-
-Console.WriteLine("Hello, World!");
 
 var products = new List<Product>
 {
@@ -93,7 +93,7 @@ var products = new List<Product>
     {
         Name = "زيت زيتون فلسطيني عصره اولى",
         Description = "متوفر باللتر",
-        Price = 5,
+        Price = 5.5,
         Image = ""
     },
     new Product
@@ -119,7 +119,7 @@ var products = new List<Product>
     },
     new Product
     {
-        Name = "سماق ادرني درجه اولى",
+        Name = "سماق اردني درجه اولى",
         Description = "متوفر ربع كيلو أو نص كيلو",
         Price = 1.25,
         Image = "",
@@ -203,9 +203,6 @@ var products = new List<Product>
     },
 };
 
-
-Console.WriteLine(products.Count);
-
 var zatarSamar = new Store
 {
     Name = "زعتر سمر",
@@ -217,5 +214,15 @@ var zatarSamar = new Store
     Owner = 1231231,
     Currency = "KWD"
 };
-zatarSamar.Name = "زعتر سمر";
-zatarSamar.Shortcode = "zatar-samar";
+
+
+foreach (var product in products)
+{
+    zatarSamar.Products.Add(product);
+}
+
+var context = new ApplicationContext();
+
+context.Stores.Add(zatarSamar);
+
+context.SaveChanges();
