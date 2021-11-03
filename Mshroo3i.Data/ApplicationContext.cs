@@ -30,7 +30,7 @@ namespace Mshroo3i.Data
         {
             // Store configrations
             modelBuilder.Entity<Store>().HasKey(p => p.Id);
-            modelBuilder.Entity<Store>().HasIndex(p => p.Shortcode);
+            modelBuilder.Entity<Store>().HasIndex(p => p.Shortcode).IsUnique();
             modelBuilder.Entity<Store>().HasMany(p => p.Products).WithOne().OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Store>().Property(p => p.Created).HasDefaultValueSql("NOW()");
             modelBuilder.Entity<Store>().Property(p => p.LastModified).HasDefaultValueSql("NOW()");
