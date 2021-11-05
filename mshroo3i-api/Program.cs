@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 using Mshroo3i.Data;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,11 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.Configure<JsonOptions>(opt =>
+{
+    opt.SerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+});
 
 var app = builder.Build();
 
@@ -37,8 +45,10 @@ app.MapGet("{apiVersion}/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
-app.MapGet("api/stores/{shortcode}", async (string shortcode, ApplicationContext context) =>
+app.MapGet("api/stores/{shortcode}", async (string shortcode, string? myquery, ApplicationContext context) =>
 {
+    Console.WriteLine(myquery);
+
     var store = await context.Stores
         .Include(s => s.Products)
         .ThenInclude(p => p.ProductOptions)

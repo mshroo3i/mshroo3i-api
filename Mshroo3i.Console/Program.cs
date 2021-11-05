@@ -93,7 +93,7 @@ var products = new List<Product>
     {
         Name = "زيت زيتون فلسطيني عصره اولى",
         Description = "متوفر باللتر",
-        Price = 5.5,
+        Price = 6,
         Image = ""
     },
     new Product
