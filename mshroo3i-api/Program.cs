@@ -3,13 +3,18 @@ using Microsoft.EntityFrameworkCore;
 using Mshroo3i.Data;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+SqlAuthenticationProvider.SetProvider(
+    SqlAuthenticationMethod.ActiveDirectoryDeviceCodeFlow, 
+    new CustomAzureSqlAuthProvider());
+var sqlConnection = new SqlConnection(ApplicationContext.ConnectionString);
 builder.Services.AddDbContext<ApplicationContext>(options =>
 {
-    options.UseNpgsql(ApplicationContext.ConnectionString);
+    options.UseSqlServer(sqlConnection);
     options.LogTo(Console.WriteLine);
 });
 

@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Mshroo3i.Data;
 using Mshroo3i.Domain;
@@ -221,8 +223,12 @@ foreach (var product in products)
     zatarSamar.Products.Add(product);
 }
 
+SqlAuthenticationProvider.SetProvider(
+    SqlAuthenticationMethod.ActiveDirectoryDeviceCodeFlow, 
+    new CustomAzureSqlAuthProvider());
+var sqlConnection = new SqlConnection(ApplicationContext.ConnectionString);
 var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
-optionsBuilder.UseSqlServer(ApplicationContext.ConnectionString, options =>
+optionsBuilder.UseSqlServer(sqlConnection, options =>
 {
     options.EnableRetryOnFailure();
 });

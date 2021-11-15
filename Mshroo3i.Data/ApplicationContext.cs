@@ -8,7 +8,7 @@ namespace Mshroo3i.Data
 {
     public sealed class ApplicationContext : DbContext
     {
-        public const string ConnectionString = @"Server=tcp:mshroo3idbserver.database.windows.net; Database=mshroo3idb;";
+        public const string ConnectionString = @"Server=tcp:mshroo3idbserver.database.windows.net;Authentication=Active Directory Device Code Flow;Database=mshroo3idb;";
 
         public DbSet<Store> Stores { get; set; }
         public DbSet<Product> Products {  get; set; }
@@ -17,12 +17,10 @@ namespace Mshroo3i.Data
 
         public ApplicationContext()
         {
-            SetDbAuthToken();
         }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
-            SetDbAuthToken();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -77,26 +75,6 @@ namespace Mshroo3i.Data
                 entry.Property("LastModified").CurrentValue = DateTime.UtcNow;
             }
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
-        }
-
-        private void SetDbAuthToken()
-        {
-            var con = Database.GetDbConnection();
-            if (con is not SqlConnection connection) return;
-            
-            var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions
-            {
-                // ExcludeEnvironmentCredential = true,
-                ExcludeVisualStudioCredential = true,
-                ExcludeVisualStudioCodeCredential = true,
-                // ExcludeSharedTokenCacheCredential = true
-            });            
-            // var credential = new DefaultAzureCredential();
-            var azureSqlScopes = new[] {"https://database.windows.net//.default"};
-            var tokenRequestContext = new TokenRequestContext(azureSqlScopes);
-            var tokenResult = credential.GetToken(tokenRequestContext);
-            Console.WriteLine(tokenResult.Token);
-            connection.AccessToken = tokenResult.Token;
         }
     }
 }
