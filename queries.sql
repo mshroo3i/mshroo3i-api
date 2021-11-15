@@ -1,8 +1,8 @@
-SELECT p.id, p.NAME, p.description, p.price, po.option_name, po.option_type, o.name, o.price_increment
-FROM products p
-INNER JOIN product_options po on po.product_id = p.id
-INNER JOIN options o on o.product_option_id = po.id
-INNER JOIN stores s on s.id = p.store_id
+SELECT p.Id, p.Name, p.Description, p.Price, po.OptionName, po.OptionType, o.name, o.PriceIncrement
+FROM Products p
+INNER JOIN ProductOptions po on po.ProductId = p.id
+INNER JOIN Options o on o.ProductOptionId = po.id
+INNER JOIN stores s on s.id = p.StoreId
 WHERE s.shortcode = 'zatar-samar'
 AND p.id = 1;
 

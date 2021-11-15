@@ -7,7 +7,9 @@
 * [ ] build seed
 * [ ] build test
 
-# EF Commands
+# Commands
+
+## EF Core
 
 ```
 dotnet-ef dbcontext script
@@ -16,4 +18,21 @@ dotnet-ef migrations add <NAME>
 
 dotnet-ef database update
 dotnet-ef database drop
+```
+
+## MSI
+
+```sql
+CREATE USER [localdbaccess] FROM EXTERNAL PROVIDER;
+ALTER ROLE db_datareader ADD MEMBER [localdbaccess];
+ALTER ROLE db_datawriter ADD MEMBER [localdbaccess];
+
+SELECT name, type, type_desc, CAST(CAST(sid as varbinary(16)) as uniqueidentifier) as appId
+from sys.database_principals
+    GO
+
+select m.name as Member, r.name as Role
+from sys.database_role_members
+         inner join sys.database_principals m on sys.database_role_members.member_principal_id = m.principal_id
+         inner join sys.database_principals r on sys.database_role_members.role_principal_id = r.principal_id
 ```

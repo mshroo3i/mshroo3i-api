@@ -221,7 +221,12 @@ foreach (var product in products)
     zatarSamar.Products.Add(product);
 }
 
-var context = new ApplicationContext();
+var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+optionsBuilder.UseSqlServer(ApplicationContext.ConnectionString, options =>
+{
+    options.EnableRetryOnFailure();
+});
+var context = new ApplicationContext(optionsBuilder.Options);
 
 context.Stores.Add(zatarSamar);
 
