@@ -3,18 +3,17 @@ using Microsoft.EntityFrameworkCore;
 using Mshroo3i.Data;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-SqlAuthenticationProvider.SetProvider(
-    SqlAuthenticationMethod.ActiveDirectoryDeviceCodeFlow, 
-    new CustomAzureSqlAuthProvider());
-var sqlConnection = new SqlConnection(ApplicationContext.ConnectionString);
+var sqlConnection = ConnectionFactory.CreateSqlConnection(ApplicationContext.ConnectionString);
 builder.Services.AddDbContext<ApplicationContext>(options =>
 {
-    options.UseSqlServer(sqlConnection);
+    options.UseSqlServer(sqlConnection, sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure();
+    });
     options.LogTo(Console.WriteLine);
 });
 

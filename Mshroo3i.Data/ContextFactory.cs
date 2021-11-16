@@ -8,10 +8,7 @@ namespace Mshroo3i.Data
     {
         public ApplicationContext CreateDbContext(string[] args)
         {
-            SqlAuthenticationProvider.SetProvider(
-                SqlAuthenticationMethod.ActiveDirectoryDeviceCodeFlow, 
-                new CustomAzureSqlAuthProvider());
-            var sqlConnection = new SqlConnection(ApplicationContext.ConnectionString);
+            var sqlConnection = ConnectionFactory.CreateSqlConnection(ApplicationContext.ConnectionString);
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             optionsBuilder.UseSqlServer(sqlConnection, options =>
             {
