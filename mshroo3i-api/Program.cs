@@ -7,7 +7,8 @@ using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var sqlConnection = ConnectionFactory.CreateSqlConnection(ApplicationContext.ConnectionString);
+var connectionString = builder.Configuration.GetConnectionString("Mshroo3iDb");
+var sqlConnection = ConnectionFactory.CreateSqlConnection(connectionString);
 builder.Services.AddDbContext<ApplicationContext>(options =>
 {
     options.UseSqlServer(sqlConnection, sqlOptions =>
@@ -35,20 +36,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("{apiVersion}/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-       new WeatherForecast
-       (
-           DateTime.Now.AddDays(index),
-           Random.Shared.Next(-20, 55),
-           ""
-       ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
 app.MapGet("api/stores/{shortcode}", async (string shortcode, string? myquery, ApplicationContext context) =>
 {
     Console.WriteLine(myquery);
@@ -65,11 +52,6 @@ app.MapGet("api/stores/{shortcode}", async (string shortcode, string? myquery, A
     }
 
     return Results.Ok(store);
-});
+}).WithName("GetStore");
 
 app.Run();
-
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

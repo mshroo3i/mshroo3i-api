@@ -4,8 +4,9 @@
 * [x] build docker compose
 * [x] Generate initial script
 * [x] apply db
-* [ ] build seed
+* [x] build seed
 * [ ] build test
+* [ ] build
 
 # Commands
 
