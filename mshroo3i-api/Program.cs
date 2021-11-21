@@ -1,32 +1,12 @@
-using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
 using Mshroo3i.Data;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using AutoMapper;
+using mshroo3i_api;
 using mshroo3i_api.Dtos;
+using mshroo3i_api.Requests;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("Mshroo3iDb");
-var sqlConnection = ConnectionFactory.CreateSqlConnection(connectionString);
-builder.Services.AddDbContext<ApplicationContext>(options =>
-{
-    options.UseSqlServer(sqlConnection, sqlOptions => { sqlOptions.EnableRetryOnFailure(); });
-    options.LogTo(Console.WriteLine);
-});
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.Configure<JsonOptions>(opt =>
-{
-    opt.SerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
-});
-
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.RegisterServices(builder.Configuration);
 
 var app = builder.Build();
 
@@ -50,7 +30,21 @@ app.MapGet("api/stores/{shortcode}", async (string shortcode, ApplicationContext
         return Results.NotFound();
     }
 
-    return Results.Ok(mapper.Map<StoreDto>(store));
+    return Results.Ok(mapper.Map<StoreResponse>(store));
 }).WithName("GetStore");
+
+app.MapPut("api/stores/{shortcode}/product/{id}", async (int id, string shortcode, ProductRequest product, ApplicationContext context, IMapper mapper) =>
+{
+    var productToUpdate = await context.Products.FirstOrDefaultAsync(p => p.Store.Shortcode == shortcode && p.Id == id);
+    if (productToUpdate is null)
+    {
+        return Results.NotFound();
+    }
+    
+    mapper.Map(product, productToUpdate);
+    await context.SaveChangesAsync();
+
+    return Results.Ok();
+}).WithName("UpdateProduct");
 
 app.Run();

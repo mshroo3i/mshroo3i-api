@@ -2,9 +2,10 @@
 
 namespace mshroo3i_api.Dtos;
 
-public class ProductOptionDto
+public class ProductOptionResponse
 {
+    public int Id { get; set; }
     public string OptionName { get; set; } = string.Empty;
-    public IList<OptionDto> Options { get; set; } = new List<OptionDto>();
+    public IList<OptionResponse> Options { get; set; } = new List<OptionResponse>();
     public OptionType OptionType { get; set; }
 }

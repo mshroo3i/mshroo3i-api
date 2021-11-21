@@ -1,7 +1,4 @@
-﻿using Azure.Core;
-using Azure.Identity;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Mshroo3i.Domain;
 
 namespace Mshroo3i.Data
@@ -33,7 +30,7 @@ namespace Mshroo3i.Data
             // Store configrations
             modelBuilder.Entity<Store>().HasKey(p => p.Id);
             modelBuilder.Entity<Store>().HasIndex(p => p.Shortcode).IsUnique();
-            modelBuilder.Entity<Store>().HasMany(p => p.Products).WithOne().OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Store>().HasMany(p => p.Products).WithOne(p => p.Store).OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<Store>().Property(p => p.Created).HasDefaultValueSql("GETUTCDATE()");
             modelBuilder.Entity<Store>().Property(p => p.LastModified).HasDefaultValueSql("GETUTCDATE()");
             modelBuilder.Entity<Store>().Property(p => p.Name).IsRequired();

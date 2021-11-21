@@ -10,7 +10,7 @@
         {
         }
 
-        public string Name { get; set; } = string.Empty;
-        public double PriceIncrement { get; set; } = 0;
+        public string Name { get; set; }
+        public double PriceIncrement { get; set; }
     }
 }

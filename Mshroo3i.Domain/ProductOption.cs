@@ -10,7 +10,7 @@
         {
         }
 
-        public string OptionName { get; set; } = string.Empty;
+        public string OptionName { get; set; }
         public IList<Option> Options { get; set; } = new List<Option>();
         public OptionType OptionType { get; set; }
     }

@@ -9,3 +9,11 @@ AND p.id = 1;
 select * from product_options
 
 select * from options
+
+-- UPDATE PRICE
+UPDATE p
+SET p.Price = 34354
+FROM Products p
+INNER JOIN Stores on Stores.Id = p.StoreId
+WHERE p.Id = 1
+and Shortcode = 'zatar-samar'
