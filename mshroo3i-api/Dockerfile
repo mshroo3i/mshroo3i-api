@@ -6,14 +6,14 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["mshroo3i-api/mshroo3i-api.csproj", "mshroo3i-api/"]
-RUN dotnet restore "mshroo3i-api/mshroo3i-api.csproj"
+COPY ["mshroo3i-api/Mshroo3i.WebApi.csproj", "mshroo3i-api/"]
+RUN dotnet restore "mshroo3i-api/Mshroo3i.WebApi.csproj"
 COPY . .
 WORKDIR "/src/mshroo3i-api"
-RUN dotnet build "mshroo3i-api.csproj" -c Release -o /app/build
+RUN dotnet build "Mshroo3i.WebApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "mshroo3i-api.csproj" -c Release -o /app/publish
+RUN dotnet publish "Mshroo3i.WebApi.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

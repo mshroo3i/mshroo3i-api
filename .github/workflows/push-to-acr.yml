@@ -25,6 +25,5 @@ jobs:
             username: ${{ secrets.REGISTRY_USERNAME }}
             password: ${{ secrets.REGISTRY_PASSWORD }}
         - run: |
-            cd ./mshroo3i-api
-            docker build . -t ${{ secrets.REGISTRY }}/mshroo3iapi:${{ github.sha }}
+            docker build . -f mshroo3i-api/Dockerfile -t ${{ secrets.REGISTRY }}/mshroo3iapi:${{ github.sha }}
             docker push ${{ secrets.REGISTRY }}/mshroo3iapi:${{ github.sha }}
