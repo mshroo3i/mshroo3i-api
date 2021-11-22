@@ -13,11 +13,15 @@ jobs:
     if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-    # checkout the repo
+
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@main
 
-    # build and publish to registry
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
     - name: 'Build and push image'
       uses: azure/docker-login@v1
       with:
@@ -28,8 +32,8 @@ jobs:
         docker build . -f mshroo3i-api/Dockerfile -t ${{ secrets.REGISTRY }}/mshroo3iapi:${{ github.sha }}
         docker push ${{ secrets.REGISTRY }}/mshroo3iapi:${{ github.sha }}
 
-    # deploy to app service
-    - uses: azure/webapps-deploy@v2
+    - name: 'Deploy to Web Apps'
+      uses: azure/webapps-deploy@v2
       with:
         app-name: 'mshroo3i-api'
         images: '${{ secrets.REGISTRY }}/mshroo3iapi:${{ github.sha }}'
