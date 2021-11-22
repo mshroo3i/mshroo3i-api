@@ -17,6 +17,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
+app.UseEndpoints(endpoints => endpoints.MapHealthChecks("/health"));
+
 app.MapGet("api/stores/{shortcode}", async (string shortcode, ApplicationContext context, IMapper mapper) =>
 {
     var store = await context.Stores

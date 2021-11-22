@@ -18,4 +18,4 @@ RUN dotnet publish "Mshroo3i.WebApi.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "mshroo3i-api.dll"]
+ENTRYPOINT ["dotnet", "Mshroo3i.WebApi.dll"]

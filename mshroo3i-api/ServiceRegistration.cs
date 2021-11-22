@@ -22,6 +22,8 @@ public static class ServiceRegistration
         collection.AddEndpointsApiExplorer();
         collection.AddSwaggerGen();
 
+        collection.AddHealthChecks();
+
         collection.Configure<JsonOptions>(opt =>
         {
             opt.SerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
