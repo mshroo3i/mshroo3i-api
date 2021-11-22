@@ -1,3 +1,5 @@
+[![deploy_to_webapps](https://github.com/mshroo3i/mshroo3i-api/actions/workflows/push-to-acr.yml/badge.svg)](https://github.com/mshroo3i/mshroo3i-api/actions/workflows/push-to-acr.yml)
+
 # TODO
 
 * [x] Finalize DB Context
