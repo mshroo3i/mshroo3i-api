@@ -1,4 +1,4 @@
-name: build_image
+name: build_and_deploy_docker
 on:
   push:
     branches:
@@ -7,20 +7,23 @@ on:
     types: [closed]
     branches:
       - main
+
 jobs:
-  build:
-    if: github.event_name == 'push' || github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    steps:
-      - name: ACR build
-        id: acr
-        uses: azure/acr-build@v1
-        with:
-          service_principal: ${{ secrets.service_principal }}
-          service_principal_password: ${{ secrets.service_principal_password }}
-          tenant: ${{ secrets.tenant }}
-          registry: ${{ secrets.registry }}
-          repository: ${{ secrets.repository }}
-          image: image
-          git_access_token: ${{ secrets.git_access_token }}
-          folder: ./mshroo3i-api
+    build-and-deploy:
+        if: github.event_name == 'push' || github.event.pull_request.merged == true
+        runs-on: ubuntu-latest
+        steps:
+        # checkout the repo
+        - name: 'Checkout GitHub Action'
+          uses: actions/checkout@main
+
+        # build and deploy to registry
+        - name: 'Build and push image'
+          uses: azure/docker-login@v1
+          with:
+            login-server: ${{ secrets.REGISTRY }}
+            username: ${{ secrets.REGISTRY_USERNAME }}
+            password: ${{ secrets.REGISTRY_PASSWORD }}
+        - run: |
+            docker build . -t ${{ secrets.REGISTRY }}/mshroo3iapi:${{ github.sha }}
+            docker push ${{ secrets.REGISTRY }}/mshroo3iapi:${{ github.sha }}
