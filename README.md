@@ -24,9 +24,9 @@ dotnet-ef database drop
 ## MSI
 
 ```sql
-CREATE USER [localdbaccess] FROM EXTERNAL PROVIDER;
-ALTER ROLE db_datareader ADD MEMBER [localdbaccess];
-ALTER ROLE db_datawriter ADD MEMBER [localdbaccess];
+CREATE USER [Db Read Write Access] FROM EXTERNAL PROVIDER;
+ALTER ROLE db_datareader ADD MEMBER [Db Read Write Access];
+ALTER ROLE db_datawriter ADD MEMBER [Db Read Write Access];
 
 SELECT name, type, type_desc, CAST(CAST(sid as varbinary(16)) as uniqueidentifier) as appId
 from sys.database_principals
