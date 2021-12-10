@@ -1,6 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Mshroo3i.Data;
 using Mshroo3i.Domain;

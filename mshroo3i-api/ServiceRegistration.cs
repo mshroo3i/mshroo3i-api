@@ -10,6 +10,8 @@ public static class ServiceRegistration
 {
     public static IServiceCollection RegisterServices(this IServiceCollection collection, ConfigurationManager configuration)
     {
+        collection.AddControllers();
+        
         var connectionString = configuration.GetConnectionString("Mshroo3iDb");
         var sqlConnection = ConnectionFactory.CreateSqlConnection(connectionString);
         collection.AddDbContext<ApplicationContext>(options =>
