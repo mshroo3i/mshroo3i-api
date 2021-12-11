@@ -7,7 +7,6 @@ using mshroo3i_api.Requests;
 
 namespace mshroo3i_api.Controllers;
 
-[Route("stores")]
 public class StoresController : MainController
 {
     private readonly ApplicationContext _applicationContext;
@@ -34,20 +33,5 @@ public class StoresController : MainController
         }
 
         return Ok(_mapper.Map<StoreResponse>(store));
-    }
-
-    [HttpPut("{shortcode}/product/{productId}", Name = "UpdateProduct")]
-    public async Task<IActionResult> UpdateProduct(string shortcode, int productId, ProductRequest product)
-    {
-        var productToUpdate = await _applicationContext.Products.FirstOrDefaultAsync(p => p.Store.Shortcode == shortcode && p.Id == productId);
-        if (productToUpdate is null)
-        {
-            return NotFound();
-        }
-
-        _mapper.Map(product, productToUpdate);
-        await _applicationContext.SaveChangesAsync();
-
-        return Ok();
     }
 }
