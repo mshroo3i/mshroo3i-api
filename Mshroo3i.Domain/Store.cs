@@ -11,12 +11,14 @@
             Owner = owner;
         }
 
-        public string Name { get; set; }
+        public string NameAr { get; set; }
+        public string NameEn { get; set; }
         public string Shortcode { get; set; }
         public string Description { get; set; }
         public string LogoImg { get; set; }
         public string HeroImg { get; set; }
         public string InstagramHandle { get; set; }
+        public string WhatsAppUri { get; set; }
         public IList<Product> Products { get; set; } = new List<Product>();
         public int Owner { get; set; }
         public string Currency { get; set; }

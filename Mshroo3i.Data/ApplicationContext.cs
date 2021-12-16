@@ -33,10 +33,13 @@ public sealed class ApplicationContext : DbContext
         modelBuilder.Entity<Store>().HasMany(p => p.Products).WithOne(p => p.Store).OnDelete(DeleteBehavior.Cascade);
         modelBuilder.Entity<Store>().Property(p => p.Created).HasDefaultValueSql("GETUTCDATE()");
         modelBuilder.Entity<Store>().Property(p => p.LastModified).HasDefaultValueSql("GETUTCDATE()");
-        modelBuilder.Entity<Store>().Property(p => p.Name).IsRequired();
+        modelBuilder.Entity<Store>().Property(p => p.NameAr).IsRequired();
+        modelBuilder.Entity<Store>().Property(p => p.NameEn).IsRequired();
         modelBuilder.Entity<Store>().Property(p => p.Shortcode).IsRequired().HasMaxLength(40);
         modelBuilder.Entity<Store>().Property(p => p.Currency).IsRequired();
         modelBuilder.Entity<Store>().Property(p => p.HeroImg).IsRequired();
+        modelBuilder.Entity<Store>().Property(p => p.InstagramHandle);
+        modelBuilder.Entity<Store>().Property(p => p.WhatsAppUri).IsRequired();
 
         // Product configrations
         modelBuilder.Entity<Product>().HasKey(p => p.Id);

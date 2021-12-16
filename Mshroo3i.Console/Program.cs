@@ -206,12 +206,14 @@ var products = new List<Product>
 
 var zatarSamar = new Store
 {
-    Name = "زعتر سمر",
+    NameAr = "زعتر سمر",
+    NameEn = "Zatar Samar",
     Shortcode = "zatar-samar",
     Description = "مشروع كويتي - زعتر أصلي درجة أولى - دُقة (زعتر أحمر) أجود أنواع الزعتر الفلسطيني",
     HeroImg = "header-zatar.jpeg",
     LogoImg = "leaf-logo.png",
     InstagramHandle = "zatarsamar",
+    WhatsAppUri = "https://wa.me/96565544219",
     Owner = 1231231,
     Currency = "KWD"
 };
