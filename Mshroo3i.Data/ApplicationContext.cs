@@ -48,6 +48,7 @@ public sealed class ApplicationContext : DbContext
         modelBuilder.Entity<Product>().HasMany(p => p.ProductOptions).WithOne().OnDelete(DeleteBehavior.Cascade);
         modelBuilder.Entity<Product>().Property(p => p.Name).IsRequired();
         modelBuilder.Entity<Product>().Property(p => p.Price).IsRequired();
+        modelBuilder.Entity<Product>().Property(p => p.ImageSrc);
 
         // ProductOption configrations
         modelBuilder.Entity<ProductOption>().HasKey(p => p.Id);

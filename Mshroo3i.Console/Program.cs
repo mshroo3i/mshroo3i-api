@@ -11,7 +11,7 @@ var products = new List<Product>
         Name = "زعتر فاخر فلسطيني",
         Description = "متوفر علبه ريع كيلو أو علبه نص كيلو",
         Price = 2,
-        Image = "zatar-2.jpeg",
+        ImageSrc = "zatar-2.jpeg",
         ProductOptions = new List<ProductOption>
         {
             new ProductOption
@@ -39,7 +39,7 @@ var products = new List<Product>
         Name = "زعتر ممتاز فلسطيني",
         Description = "متوفر علبه ريع كيلو أو علبه نص كيلو",
         Price = 1.5,
-        Image = "zatar-2.jpeg",
+        ImageSrc = "zatar-2.jpeg",
         ProductOptions = new List<ProductOption>
         {
             new ProductOption
@@ -67,7 +67,7 @@ var products = new List<Product>
         Name = "دقه فلسطينيه زعتر احمر",
         Description = "متوفر علبه ريع كيلو أو علبه نص كيلو",
         Price = 1.5,
-        Image = "do2a-2.jpeg",
+        ImageSrc = "do2a-2.jpeg",
         ProductOptions = new List<ProductOption>
         {
             new ProductOption
@@ -95,35 +95,35 @@ var products = new List<Product>
         Name = "زيت زيتون فلسطيني عصره اولى",
         Description = "متوفر باللتر",
         Price = 6,
-        Image = ""
+        ImageSrc = ""
     },
     new Product
     {
         Name = "زيت تركي درجه اولى",
         Description = "متوفر باللتر",
         Price = 3,
-        Image = ""
+        ImageSrc = ""
     },
     new Product
     {
         Name = "زيتون بالخلطه",
         Description = "نص كيلو",
         Price = 2,
-        Image = "zaytoon-mix-1.jpeg"
+        ImageSrc = "zaytoon-mix-1.jpeg"
     },
     new Product
     {
         Name = "مقدوس حبه صغيره قرشة اقل من نص",
         Description = "",
         Price = 2.5,
-        Image = "magdoos-1.jpeg"
+        ImageSrc = "magdoos-1.jpeg"
     },
     new Product
     {
         Name = "سماق اردني درجه اولى",
         Description = "متوفر ربع كيلو أو نص كيلو",
         Price = 1.25,
-        Image = "",
+        ImageSrc = "",
         ProductOptions = new List<ProductOption>
         {
             new ProductOption
@@ -151,7 +151,7 @@ var products = new List<Product>
         Name = "سمسميه اردنيه مغلفه",
         Description = "متوفر ربع كيلو أو نص كيلو",
         Price = 1.5,
-        Image = "",
+        ImageSrc = "",
         ProductOptions = new List<ProductOption>
         {
             new ProductOption
@@ -179,7 +179,7 @@ var products = new List<Product>
         Name = "مرميه",
         Description = "متوفر ربع كيلو أو نص كيلو",
         Price = 1.25,
-        Image = "",
+        ImageSrc = "",
         ProductOptions = new List<ProductOption>
         {
             new ProductOption
