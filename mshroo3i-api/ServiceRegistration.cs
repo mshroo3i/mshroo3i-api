@@ -10,7 +10,11 @@ public static class ServiceRegistration
 {
     public static IServiceCollection RegisterServices(this IServiceCollection collection, ConfigurationManager configuration)
     {
-        collection.AddControllers();
+        collection.AddControllers().AddJsonOptions(opt =>
+        {
+            opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+            opt.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        });
         
         var connectionString = configuration.GetConnectionString("Mshroo3iDb");
         var sqlConnection = ConnectionFactory.CreateSqlConnection(connectionString);
@@ -25,12 +29,6 @@ public static class ServiceRegistration
         collection.AddSwaggerGen();
 
         collection.AddHealthChecks();
-
-        collection.Configure<JsonOptions>(opt =>
-        {
-            opt.SerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
-            opt.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-        });
 
         collection.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
