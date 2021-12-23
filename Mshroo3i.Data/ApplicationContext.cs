@@ -10,7 +10,7 @@ public sealed class ApplicationContext : DbContext
     public DbSet<Store> Stores { get; set; }
     public DbSet<Product> Products {  get; set; }
     public DbSet<ProductOption> ProductOptions { get; set; }
-    public DbSet<Option> Options { get; set; }
+    public DbSet<ProductFieldOption> ProductFieldOptions { get; set; }
 
     public ApplicationContext()
     {
@@ -59,11 +59,11 @@ public sealed class ApplicationContext : DbContext
         modelBuilder.Entity<ProductOption>().Property(p => p.OptionType).HasConversion<string>();
 
         // Options configurations
-        modelBuilder.Entity<Option>().HasKey(p => p.Id);
-        modelBuilder.Entity<Option>().Property(p => p.Created).HasDefaultValueSql("GETUTCDATE()");
-        modelBuilder.Entity<Option>().Property(p => p.LastModified).HasDefaultValueSql("GETUTCDATE()");
-        modelBuilder.Entity<Option>().Property(p => p.Name).IsRequired();
-        modelBuilder.Entity<Option>().Property(p => p.PriceIncrement).IsRequired();
+        modelBuilder.Entity<ProductFieldOption>().HasKey(p => p.Id);
+        modelBuilder.Entity<ProductFieldOption>().Property(p => p.Created).HasDefaultValueSql("GETUTCDATE()");
+        modelBuilder.Entity<ProductFieldOption>().Property(p => p.LastModified).HasDefaultValueSql("GETUTCDATE()");
+        modelBuilder.Entity<ProductFieldOption>().Property(p => p.Name).IsRequired();
+        modelBuilder.Entity<ProductFieldOption>().Property(p => p.PriceIncrement).IsRequired();
 
         base.OnModelCreating(modelBuilder);
     }

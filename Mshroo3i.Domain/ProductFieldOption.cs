@@ -1,12 +1,12 @@
 ﻿namespace Mshroo3i.Domain
 {
-    public class Option : Entity
+    public class ProductFieldOption : Entity
     {
-        public Option()
+        public ProductFieldOption()
         {
         }
 
-        public Option(DateTime created) : base(created)
+        public ProductFieldOption(DateTime created) : base(created)
         {
         }
 

@@ -11,7 +11,7 @@
         }
 
         public string OptionName { get; set; }
-        public IList<Option> Options { get; set; } = new List<Option>();
+        public IList<ProductFieldOption> Options { get; set; } = new List<ProductFieldOption>();
         public OptionType OptionType { get; set; }
     }
 }

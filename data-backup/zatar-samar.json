@@ -1,0 +1,203 @@
+{
+  "id": 1,
+  "nameEn": "Zatar Samar",
+  "nameAr": "زعتر سمر",
+  "description": "مشروع كويتي - زعتر أصلي درجة أولى - دُقة (زعتر أحمر) أجود أنواع الزعتر الفلسطيني",
+  "shortcode": "zatar-samar",
+  "heroImg": "/assets/header-zatar.jpeg",
+  "instagramHandle": "zatarsamar",
+  "whatsAppUri": "https://wa.me/96565544219",
+  "logoImg": "leaf-logo.png",
+  "products": [
+    {
+      "id": 1,
+      "name": "زعتر فاخر فلسطيني",
+      "description": "متوفر علبه ريع كيلو أو علبه نص كيلو",
+      "imageSrc": "/assets/products-pics/zatar-2.jpeg",
+      "price": 2,
+      "productOptions": [
+        {
+          "id": 1,
+          "optionName": "الحجم",
+          "options": [
+            {
+              "id": 1,
+              "name": "علبه ريع كيلو",
+              "priceIncrement": 0
+            },
+            {
+              "id": 2,
+              "name": "علبه نص كيلو",
+              "priceIncrement": 2
+            }
+          ],
+          "optionType": "singleSelect"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "زعتر ممتاز فلسطيني",
+      "description": "متوفر علبه ريع كيلو أو علبه نص كيلو",
+      "imageSrc": "/assets/products-pics/zatar-2.jpeg",
+      "price": 1.5,
+      "productOptions": [
+        {
+          "id": 2,
+          "optionName": "الحجم",
+          "options": [
+            {
+              "id": 3,
+              "name": "علبه ريع كيلو",
+              "priceIncrement": 0
+            },
+            {
+              "id": 4,
+              "name": "علبه نص كيلو",
+              "priceIncrement": 1.5
+            }
+          ],
+          "optionType": "singleSelect"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "دقه فلسطينيه زعتر احمر",
+      "description": "متوفر علبه ريع كيلو أو علبه نص كيلو",
+      "imageSrc": "/assets/products-pics/do2a-2.jpeg",
+      "price": 1.5,
+      "productOptions": [
+        {
+          "id": 3,
+          "optionName": "الحجم",
+          "options": [
+            {
+              "id": 5,
+              "name": "علبه ريع كيلو",
+              "priceIncrement": 0
+            },
+            {
+              "id": 6,
+              "name": "علبه نص كيلو",
+              "priceIncrement": 1.5
+            }
+          ],
+          "optionType": "singleSelect"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "زيت زيتون فلسطيني عصره اولى",
+      "description": "متوفر باللتر",
+      "imageSrc": "",
+      "price": 6,
+      "productOptions": []
+    },
+    {
+      "id": 5,
+      "name": "زيت تركي درجه اولى",
+      "description": "متوفر باللتر",
+      "imageSrc": "",
+      "price": 3,
+      "productOptions": []
+    },
+    {
+      "id": 6,
+      "name": "زيتون بالخلطه",
+      "description": "نص كيلو",
+      "imageSrc": "/assets/products-pics/zaytoon-mix-1.jpeg",
+      "price": 2,
+      "productOptions": []
+    },
+    {
+      "id": 7,
+      "name": "مقدوس حبه صغيره قرشة اقل من نص",
+      "description": "",
+      "imageSrc": "/assets/products-pics/magdoos-1.jpeg",
+      "price": 2.5,
+      "productOptions": []
+    },
+    {
+      "id": 8,
+      "name": "سماق اردني درجه اولى",
+      "description": "متوفر ربع كيلو أو نص كيلو",
+      "imageSrc": "",
+      "price": 1.25,
+      "productOptions": [
+        {
+          "id": 4,
+          "optionName": "الحجم",
+          "options": [
+            {
+              "id": 7,
+              "name": "علبه ريع كيلو",
+              "priceIncrement": 0
+            },
+            {
+              "id": 8,
+              "name": "علبه نص كيلو",
+              "priceIncrement": 1.25
+            }
+          ],
+          "optionType": "singleSelect"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "سمسميه اردنيه مغلفه",
+      "description": "متوفر ربع كيلو أو نص كيلو",
+      "imageSrc": "/assets/products-pics/simsimya-2.jpeg",
+      "price": 1.5,
+      "productOptions": [
+        {
+          "id": 5,
+          "optionName": "الحجم",
+          "options": [
+            {
+              "id": 9,
+              "name": "علبه ريع كيلو",
+              "priceIncrement": 0
+            },
+            {
+              "id": 10,
+              "name": "علبه نص كيلو",
+              "priceIncrement": 1.5
+            }
+          ],
+          "optionType": "singleSelect"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "مرميه",
+      "description": "متوفر ربع كيلو أو نص كيلو",
+      "imageSrc": "",
+      "price": 1.25,
+      "productOptions": [
+        {
+          "id": 6,
+          "optionName": "الحجم",
+          "options": [
+            {
+              "id": 11,
+              "name": "علبه ريع كيلو",
+              "priceIncrement": 0
+            },
+            {
+              "id": 12,
+              "name": "علبه نص كيلو",
+              "priceIncrement": 1.25
+            }
+          ],
+          "optionType": "singleSelect"
+        }
+      ]
+    }
+  ],
+  "owner": 1231231,
+  "currency": "KWD"
+}

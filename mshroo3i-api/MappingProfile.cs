@@ -12,7 +12,7 @@ public class MappingProfile : Profile
         CreateMap<Store, StoreResponse>();
         CreateMap<Product, ProductResponse>();
         CreateMap<ProductOption, ProductOptionResponse>();
-        CreateMap<Option, OptionResponse>();
+        CreateMap<ProductFieldOption, ProductFieldOptionResponse>();
 
         CreateMap<ProductUpdateRequest, Product>()
             .ForAllMembers(opt => opt.Condition(IgnoreNullCondition));

@@ -18,14 +18,14 @@ var products = new List<Product>
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,
-                  Options = new List<Option>
+                  Options = new List<ProductFieldOption>
                   {
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه ريع كيلو",
                            PriceIncrement = 0,
                       },
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه نص كيلو",
                            PriceIncrement = 2,
@@ -46,14 +46,14 @@ var products = new List<Product>
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,
-                  Options = new List<Option>
+                  Options = new List<ProductFieldOption>
                   {
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه ريع كيلو",
                            PriceIncrement = 0,
                       },
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه نص كيلو",
                            PriceIncrement = 1.5,
@@ -74,14 +74,14 @@ var products = new List<Product>
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,
-                  Options = new List<Option>
+                  Options = new List<ProductFieldOption>
                   {
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه ريع كيلو",
                            PriceIncrement = 0,
                       },
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه نص كيلو",
                            PriceIncrement = 1.5,
@@ -130,14 +130,14 @@ var products = new List<Product>
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,
-                  Options = new List<Option>
+                  Options = new List<ProductFieldOption>
                   {
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه ريع كيلو",
                            PriceIncrement = 0,
                       },
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه نص كيلو",
                            PriceIncrement = 1.25,
@@ -158,14 +158,14 @@ var products = new List<Product>
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,
-                  Options = new List<Option>
+                  Options = new List<ProductFieldOption>
                   {
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه ريع كيلو",
                            PriceIncrement = 0,
                       },
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه نص كيلو",
                            PriceIncrement = 3,
@@ -186,14 +186,14 @@ var products = new List<Product>
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,
-                  Options = new List<Option>
+                  Options = new List<ProductFieldOption>
                   {
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه ريع كيلو",
                            PriceIncrement = 0,
                       },
-                      new Option
+                      new ProductFieldOption
                       {
                            Name = "علبه نص كيلو",
                            PriceIncrement = 2.5,

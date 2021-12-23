@@ -6,6 +6,6 @@ public class ProductOptionResponse
 {
     public int Id { get; set; }
     public string OptionName { get; set; } = string.Empty;
-    public IList<OptionResponse> Options { get; set; } = new List<OptionResponse>();
+    public IList<ProductFieldOptionResponse> Options { get; set; } = new List<ProductFieldOptionResponse>();
     public OptionType OptionType { get; set; }
 }
