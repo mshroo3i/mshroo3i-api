@@ -9,7 +9,7 @@ public sealed class ApplicationContext : DbContext
 
     public DbSet<Store> Stores { get; set; }
     public DbSet<Product> Products {  get; set; }
-    public DbSet<ProductOption> ProductOptions { get; set; }
+    public DbSet<ProductOption> ProductFields { get; set; }
     public DbSet<ProductFieldOption> ProductFieldOptions { get; set; }
 
     public ApplicationContext()
