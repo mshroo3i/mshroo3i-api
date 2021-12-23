@@ -17,6 +17,8 @@ public class MappingProfile : Profile
         CreateMap<ProductUpdateRequest, Product>()
             .ForAllMembers(opt => opt.Condition(IgnoreNullCondition));
 
+        CreateMap<ProductAddRequest, Product>();
+
         CreateMap<StoreAddRequest, Store>();
     }
 

@@ -2,12 +2,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mshroo3i.Data;
+using Mshroo3i.Domain;
 using mshroo3i_api.Dtos;
 using mshroo3i_api.Requests;
 
 namespace mshroo3i_api.Controllers;
 
-public class ProductsController : MainController
+[ApiController]
+[Route("api/stores/{shortcode}/products")]
+public class ProductsController : ControllerBase
 {
     private readonly ApplicationContext _applicationContext;
     private readonly IMapper _mapper;
@@ -18,7 +21,7 @@ public class ProductsController : MainController
         _mapper = mapper;
     }
     
-    [HttpGet("{shortcode}/product/{productId}", Name = "GetProduct")]
+    [HttpGet("{productId}", Name = "GetProduct")]
     public async Task<IActionResult> GetProduct(string shortcode, int productId)
     {
         var product = await _applicationContext.Products.FirstOrDefaultAsync(p => p.Store.Shortcode == shortcode && p.Id == productId);
@@ -30,7 +33,7 @@ public class ProductsController : MainController
         return Ok(_mapper.Map<ProductResponse>(product));
     }
 
-    [HttpPut("{shortcode}/product/{productId}", Name = "UpdateProduct")]
+    [HttpPut("{productId}", Name = "UpdateProduct")]
     public async Task<IActionResult> UpdateProduct(string shortcode, int productId, ProductUpdateRequest productUpdate)
     {
         var productToUpdate = await _applicationContext.Products.FirstOrDefaultAsync(p => p.Store.Shortcode == shortcode && p.Id == productId);
@@ -43,5 +46,25 @@ public class ProductsController : MainController
         await _applicationContext.SaveChangesAsync();
 
         return Ok();
+    }
+    
+    [HttpPost( Name = "AddProduct")]
+    public async Task<IActionResult> AddProduct(string shortcode, ProductAddRequest newProduct)
+    {
+        var store = await _applicationContext.Stores.FirstOrDefaultAsync(s => s.Shortcode == shortcode);
+        if (store is null)
+        {
+            return NotFound();
+        }
+
+        var product = _mapper.Map<Product>(newProduct);
+        store.Products.Add(product);
+        
+        await _applicationContext.SaveChangesAsync();
+
+        return CreatedAtAction(
+            "GetProduct", 
+            new {shortcode, productId = product.Id}, 
+            _mapper.Map<ProductResponse>(product));
     }
 }

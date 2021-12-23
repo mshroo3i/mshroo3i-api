@@ -8,7 +8,9 @@ using mshroo3i_api.Requests;
 
 namespace mshroo3i_api.Controllers;
 
-public class StoresController : MainController
+[ApiController]
+[Route("api/stores")]
+public class StoresController : ControllerBase
 {
     private readonly ApplicationContext _applicationContext;
     private readonly IMapper _mapper;
