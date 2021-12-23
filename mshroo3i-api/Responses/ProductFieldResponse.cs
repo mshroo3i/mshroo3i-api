@@ -2,7 +2,7 @@
 
 namespace mshroo3i_api.Dtos;
 
-public class ProductOptionResponse
+public class ProductFieldResponse
 {
     public int Id { get; set; }
     public string OptionName { get; set; } = string.Empty;

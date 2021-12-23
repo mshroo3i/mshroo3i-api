@@ -9,7 +9,7 @@ public sealed class ApplicationContext : DbContext
 
     public DbSet<Store> Stores { get; set; }
     public DbSet<Product> Products {  get; set; }
-    public DbSet<ProductOption> ProductFields { get; set; }
+    public DbSet<ProductField> ProductFields { get; set; }
     public DbSet<ProductFieldOption> ProductFieldOptions { get; set; }
 
     public ApplicationContext()
@@ -45,18 +45,18 @@ public sealed class ApplicationContext : DbContext
         modelBuilder.Entity<Product>().HasKey(p => p.Id);
         modelBuilder.Entity<Product>().Property(p => p.Created).HasDefaultValueSql("GETUTCDATE()");
         modelBuilder.Entity<Product>().Property(p => p.LastModified).HasDefaultValueSql("GETUTCDATE()");
-        modelBuilder.Entity<Product>().HasMany(p => p.ProductOptions).WithOne().OnDelete(DeleteBehavior.Cascade);
+        modelBuilder.Entity<Product>().HasMany(p => p.ProductFields).WithOne().OnDelete(DeleteBehavior.Cascade);
         modelBuilder.Entity<Product>().Property(p => p.Name).IsRequired();
         modelBuilder.Entity<Product>().Property(p => p.Price).IsRequired();
         modelBuilder.Entity<Product>().Property(p => p.ImageSrc);
 
         // ProductOption configrations
-        modelBuilder.Entity<ProductOption>().HasKey(p => p.Id);
-        modelBuilder.Entity<ProductOption>().Property(p => p.Created).HasDefaultValueSql("GETUTCDATE()");
-        modelBuilder.Entity<ProductOption>().Property(p => p.LastModified).HasDefaultValueSql("GETUTCDATE()");
-        modelBuilder.Entity<ProductOption>().HasMany(p => p.Options).WithOne().OnDelete(DeleteBehavior.Cascade);
-        modelBuilder.Entity<ProductOption>().Property(p => p.OptionName).IsRequired();
-        modelBuilder.Entity<ProductOption>().Property(p => p.OptionType).HasConversion<string>();
+        modelBuilder.Entity<ProductField>().HasKey(p => p.Id);
+        modelBuilder.Entity<ProductField>().Property(p => p.Created).HasDefaultValueSql("GETUTCDATE()");
+        modelBuilder.Entity<ProductField>().Property(p => p.LastModified).HasDefaultValueSql("GETUTCDATE()");
+        modelBuilder.Entity<ProductField>().HasMany(p => p.Options).WithOne().OnDelete(DeleteBehavior.Cascade);
+        modelBuilder.Entity<ProductField>().Property(p => p.OptionName).IsRequired();
+        modelBuilder.Entity<ProductField>().Property(p => p.OptionType).HasConversion<string>();
 
         // Options configurations
         modelBuilder.Entity<ProductFieldOption>().HasKey(p => p.Id);

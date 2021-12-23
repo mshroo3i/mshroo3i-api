@@ -7,5 +7,5 @@ public class ProductResponse
     public string Description { get; set; } = string.Empty;
     public string ImageSrc { get; set; } = string.Empty;
     public double Price { get; set; } = 0;
-    public IList<ProductOptionResponse> ProductOptions { get; set; } = new List<ProductOptionResponse>();
+    public IList<ProductFieldResponse> ProductFields { get; set; } = new List<ProductFieldResponse>();
 }

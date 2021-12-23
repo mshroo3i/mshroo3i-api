@@ -11,7 +11,7 @@ public class MappingProfile : Profile
     {
         CreateMap<Store, StoreResponse>();
         CreateMap<Product, ProductResponse>();
-        CreateMap<ProductOption, ProductOptionResponse>();
+        CreateMap<ProductField, ProductFieldResponse>();
         CreateMap<ProductFieldOption, ProductFieldOptionResponse>();
 
         CreateMap<ProductUpdateRequest, Product>()

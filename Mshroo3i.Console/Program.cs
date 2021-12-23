@@ -12,9 +12,9 @@ var products = new List<Product>
         Description = "متوفر علبه ريع كيلو أو علبه نص كيلو",
         Price = 2,
         ImageSrc = "zatar-2.jpeg",
-        ProductOptions = new List<ProductOption>
+        ProductFields = new List<ProductField>
         {
-            new ProductOption
+            new ProductField
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,
@@ -40,9 +40,9 @@ var products = new List<Product>
         Description = "متوفر علبه ريع كيلو أو علبه نص كيلو",
         Price = 1.5,
         ImageSrc = "zatar-2.jpeg",
-        ProductOptions = new List<ProductOption>
+        ProductFields = new List<ProductField>
         {
-            new ProductOption
+            new ProductField
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,
@@ -68,9 +68,9 @@ var products = new List<Product>
         Description = "متوفر علبه ريع كيلو أو علبه نص كيلو",
         Price = 1.5,
         ImageSrc = "do2a-2.jpeg",
-        ProductOptions = new List<ProductOption>
+        ProductFields = new List<ProductField>
         {
-            new ProductOption
+            new ProductField
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,
@@ -124,9 +124,9 @@ var products = new List<Product>
         Description = "متوفر ربع كيلو أو نص كيلو",
         Price = 1.25,
         ImageSrc = "",
-        ProductOptions = new List<ProductOption>
+        ProductFields = new List<ProductField>
         {
-            new ProductOption
+            new ProductField
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,
@@ -152,9 +152,9 @@ var products = new List<Product>
         Description = "متوفر ربع كيلو أو نص كيلو",
         Price = 1.5,
         ImageSrc = "",
-        ProductOptions = new List<ProductOption>
+        ProductFields = new List<ProductField>
         {
-            new ProductOption
+            new ProductField
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,
@@ -180,9 +180,9 @@ var products = new List<Product>
         Description = "متوفر ربع كيلو أو نص كيلو",
         Price = 1.25,
         ImageSrc = "",
-        ProductOptions = new List<ProductOption>
+        ProductFields = new List<ProductField>
         {
-            new ProductOption
+            new ProductField
             {
                  OptionName = "الحجم",
                  OptionType = OptionType.SingleSelect,

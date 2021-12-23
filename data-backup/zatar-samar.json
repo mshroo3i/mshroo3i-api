@@ -15,7 +15,7 @@
       "description": "متوفر علبه ريع كيلو أو علبه نص كيلو",
       "imageSrc": "/assets/products-pics/zatar-2.jpeg",
       "price": 2,
-      "productOptions": [
+      "productFields": [
         {
           "id": 1,
           "optionName": "الحجم",
@@ -41,7 +41,7 @@
       "description": "متوفر علبه ريع كيلو أو علبه نص كيلو",
       "imageSrc": "/assets/products-pics/zatar-2.jpeg",
       "price": 1.5,
-      "productOptions": [
+      "productFields": [
         {
           "id": 2,
           "optionName": "الحجم",
@@ -67,7 +67,7 @@
       "description": "متوفر علبه ريع كيلو أو علبه نص كيلو",
       "imageSrc": "/assets/products-pics/do2a-2.jpeg",
       "price": 1.5,
-      "productOptions": [
+      "productFields": [
         {
           "id": 3,
           "optionName": "الحجم",
@@ -93,7 +93,7 @@
       "description": "متوفر باللتر",
       "imageSrc": "",
       "price": 6,
-      "productOptions": []
+      "productFields": []
     },
     {
       "id": 5,
@@ -101,7 +101,7 @@
       "description": "متوفر باللتر",
       "imageSrc": "",
       "price": 3,
-      "productOptions": []
+      "productFields": []
     },
     {
       "id": 6,
@@ -109,7 +109,7 @@
       "description": "نص كيلو",
       "imageSrc": "/assets/products-pics/zaytoon-mix-1.jpeg",
       "price": 2,
-      "productOptions": []
+      "productFields": []
     },
     {
       "id": 7,
@@ -117,7 +117,7 @@
       "description": "",
       "imageSrc": "/assets/products-pics/magdoos-1.jpeg",
       "price": 2.5,
-      "productOptions": []
+      "productFields": []
     },
     {
       "id": 8,
@@ -125,7 +125,7 @@
       "description": "متوفر ربع كيلو أو نص كيلو",
       "imageSrc": "",
       "price": 1.25,
-      "productOptions": [
+      "productFields": [
         {
           "id": 4,
           "optionName": "الحجم",
@@ -151,7 +151,7 @@
       "description": "متوفر ربع كيلو أو نص كيلو",
       "imageSrc": "/assets/products-pics/simsimya-2.jpeg",
       "price": 1.5,
-      "productOptions": [
+      "productFields": [
         {
           "id": 5,
           "optionName": "الحجم",
@@ -177,7 +177,7 @@
       "description": "متوفر ربع كيلو أو نص كيلو",
       "imageSrc": "",
       "price": 1.25,
-      "productOptions": [
+      "productFields": [
         {
           "id": 6,
           "optionName": "الحجم",

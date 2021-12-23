@@ -24,7 +24,7 @@ public class StoresController : MainController
     {
         var store = await _applicationContext.Stores
             .Include(s => s.Products)
-            .ThenInclude(p => p.ProductOptions)
+            .ThenInclude(p => p.ProductFields)
             .ThenInclude(po => po.Options)
             .FirstOrDefaultAsync(s => s.Shortcode == shortcode);
 
