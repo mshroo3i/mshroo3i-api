@@ -31,7 +31,7 @@ public class ProductsController : MainController
     }
 
     [HttpPut("{shortcode}/product/{productId}", Name = "UpdateProduct")]
-    public async Task<IActionResult> UpdateProduct(string shortcode, int productId, ProductRequest product)
+    public async Task<IActionResult> UpdateProduct(string shortcode, int productId, ProductUpdateRequest productUpdate)
     {
         var productToUpdate = await _applicationContext.Products.FirstOrDefaultAsync(p => p.Store.Shortcode == shortcode && p.Id == productId);
         if (productToUpdate is null)
@@ -39,7 +39,7 @@ public class ProductsController : MainController
             return NotFound();
         }
 
-        _mapper.Map(product, productToUpdate);
+        _mapper.Map(productUpdate, productToUpdate);
         await _applicationContext.SaveChangesAsync();
 
         return Ok();
