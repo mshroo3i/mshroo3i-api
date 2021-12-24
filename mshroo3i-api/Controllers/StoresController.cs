@@ -20,6 +20,18 @@ public class StoresController : ControllerBase
         _applicationContext = applicationContext;
         _mapper = mapper;
     }
+    
+    [HttpGet(Name = "GetStores")]
+    public async Task<IActionResult> GetStores()
+    {
+        var stores = await _applicationContext.Stores.Take(5).ToListAsync();
+        if (stores.Count == 0)
+        {
+            return NotFound();
+        }
+
+        return Ok(_mapper.Map<IList<StoreResponse>>(stores));
+    }
 
     [HttpGet("{shortcode}", Name = "GetStore")]
     public async Task<IActionResult> GetStore(string shortcode)
