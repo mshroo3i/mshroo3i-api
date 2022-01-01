@@ -20,6 +20,7 @@
         public string InstagramHandle { get; set; }
         public string WhatsAppUri { get; set; }
         public IList<Product> Products { get; set; } = new List<Product>();
+        public IList<ProductSection> Sections { get; set; }
         public int Owner { get; set; }
         public string Currency { get; set; } = "KWD";
     }

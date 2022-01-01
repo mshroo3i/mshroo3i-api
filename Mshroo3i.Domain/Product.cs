@@ -16,5 +16,6 @@
         public string ImageSrc { get; set; }
         public double Price { get; set; }
         public IList<ProductField> ProductFields { get; set; } = new List<ProductField>();
+        public ProductSection? ProductSection { get; set; }
     }
 }
