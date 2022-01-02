@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mshroo3i.Data;
@@ -40,6 +41,7 @@ public class StoresController : ControllerBase
             .Include(s => s.Products)
             .ThenInclude(p => p.ProductFields)
             .ThenInclude(po => po.Options)
+            .ProjectTo<StoreResponse>(_mapper.ConfigurationProvider)
             .FirstOrDefaultAsync(s => s.Shortcode == shortcode);
 
         if (store == null)
@@ -47,7 +49,7 @@ public class StoresController : ControllerBase
             return NotFound();
         }
 
-        return Ok(_mapper.Map<StoreResponse>(store));
+        return Ok(store);
     }
 
     [HttpPost(Name = "AddStore")]

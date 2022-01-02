@@ -17,9 +17,10 @@ public class MappingProfile : Profile
         CreateMap<ProductUpdateRequest, Product>()
             .ForAllMembers(opt => opt.Condition(IgnoreNullCondition));
 
-        CreateMap<ProductAddRequest, Product>();
-
         CreateMap<StoreAddRequest, Store>();
+        CreateMap<ProductAddRequest, Product>();
+        CreateMap<ProductFieldAddRequest, ProductField>();
+        CreateMap<ProductFieldOptionsAddRequest, ProductFieldOption>();
     }
 
     private bool IgnoreNullCondition<TSource, TDestination, TMember>(TSource src, TDestination dest, TMember sourceMember)

@@ -45,13 +45,13 @@ public sealed class ApplicationContext : DbContext
         modelBuilder.Entity<Product>().HasKey(p => p.Id);
         modelBuilder.Entity<Product>().Property(p => p.Created).HasDefaultValueSql("GETUTCDATE()");
         modelBuilder.Entity<Product>().Property(p => p.LastModified).HasDefaultValueSql("GETUTCDATE()");
-        modelBuilder.Entity<Product>().HasMany(p => p.ProductFields).WithOne().OnDelete(DeleteBehavior.Cascade);
+        modelBuilder.Entity<Product>().HasMany(p => p.ProductFields).WithOne(pf => pf.Product).OnDelete(DeleteBehavior.Cascade);
         modelBuilder.Entity<Product>().Property(p => p.Name).IsRequired();
         modelBuilder.Entity<Product>().Property(p => p.Price).IsRequired();
         modelBuilder.Entity<Product>().Property(p => p.ImageSrc);
         modelBuilder.Entity<Product>().Property(p => p.DisplayPrice).HasDefaultValue(true);
 
-        // ProductOption configrations
+        // ProductField configrations
         modelBuilder.Entity<ProductField>().HasKey(p => p.Id);
         modelBuilder.Entity<ProductField>().Property(p => p.Created).HasDefaultValueSql("GETUTCDATE()");
         modelBuilder.Entity<ProductField>().Property(p => p.LastModified).HasDefaultValueSql("GETUTCDATE()");

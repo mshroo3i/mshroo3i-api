@@ -13,5 +13,6 @@
         public string OptionName { get; set; }
         public IList<ProductFieldOption> Options { get; set; } = new List<ProductFieldOption>();
         public OptionType OptionType { get; set; }
+        public Product Product { get; set; }
     }
 }

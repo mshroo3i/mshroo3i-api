@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mshroo3i.Data;
@@ -24,13 +25,19 @@ public class ProductsController : ControllerBase
     [HttpGet("{productId}", Name = "GetProduct")]
     public async Task<IActionResult> GetProduct(string shortcode, int productId)
     {
-        var product = await _applicationContext.Products.FirstOrDefaultAsync(p => p.Store.Shortcode == shortcode && p.Id == productId);
+        var product = await _applicationContext.Products
+            .Include(p => p.ProductFields)
+            .ThenInclude(pf => pf.Options)
+            .Where(p => p.Store.Shortcode == shortcode && p.Id == productId)
+            .ProjectTo<ProductResponse>(_mapper.ConfigurationProvider)
+            .FirstOrDefaultAsync();
+        
         if (product is null)
         {
             return NotFound();
         }
 
-        return Ok(_mapper.Map<ProductResponse>(product));
+        return Ok(product);
     }
 
     [HttpPut("{productId}", Name = "UpdateProduct")]
