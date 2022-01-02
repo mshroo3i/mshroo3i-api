@@ -49,6 +49,7 @@ public sealed class ApplicationContext : DbContext
         modelBuilder.Entity<Product>().Property(p => p.Name).IsRequired();
         modelBuilder.Entity<Product>().Property(p => p.Price).IsRequired();
         modelBuilder.Entity<Product>().Property(p => p.ImageSrc);
+        modelBuilder.Entity<Product>().Property(p => p.DisplayPrice).HasDefaultValue(true);
 
         // ProductOption configrations
         modelBuilder.Entity<ProductField>().HasKey(p => p.Id);
