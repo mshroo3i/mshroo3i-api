@@ -6,7 +6,7 @@ public class ProductResponse
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public string ImageSrc { get; set; } = string.Empty;
-    public double Price { get; set; } = 0;
+    public double Price { get; set; }
     public IList<ProductFieldResponse> ProductFields { get; set; } = new List<ProductFieldResponse>();
-    public bool DisplayPrice { get; set;  }
+    public bool? DisplayPrice { get; set;  }
 }
