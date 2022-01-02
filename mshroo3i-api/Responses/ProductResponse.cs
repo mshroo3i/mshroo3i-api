@@ -8,4 +8,5 @@ public class ProductResponse
     public string ImageSrc { get; set; } = string.Empty;
     public double Price { get; set; } = 0;
     public IList<ProductFieldResponse> ProductFields { get; set; } = new List<ProductFieldResponse>();
+    public bool DisplayPrice { get; set;  }
 }
